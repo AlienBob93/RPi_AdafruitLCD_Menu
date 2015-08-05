@@ -27,7 +27,7 @@ sub13 = menu.subElement("Weather>Loc.", "PYTHON", 'str(Weather.currLoc())')
 
 sub21 = menu.subElement("Netw.>Signal", "BASH", "iwconfig wlan0 | awk -F'[ =]+' '/Signal level/ {print $7}' | cut -d/ -f1")
 sub22 = menu.subElement("Netw.>SSID", "BASH", "iwconfig wlan0 | grep 'ESSID:' | awk '{print $4}' | sed 's/ESSID://g'")
-sub23 = menu.subElement("Netw>IP", "BASH", "ifconfig wlan0 | grep 'inet addr:' | awk '{print $2}' | sed 's/addr://g'")
+sub23 = menu.subElement("Netw.>IP", "BASH", "ifconfig wlan0 | grep 'inet addr:' | awk '{print $2}' | sed 's/addr://g'")
 
 sub31 = menu.subElement("System>CPU", "PYTHON", 'str(str(psutil.cpu_percent()) + "%")')
 
