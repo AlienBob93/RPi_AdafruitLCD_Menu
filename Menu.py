@@ -160,6 +160,9 @@ class Menu():
 		msg = str(eval(self.element["Content"]))
 	    elif self.element["Type"] == "BASH":
 	        msg = commands.getoutput(self.element["Content"])
+            elif self.element["Type"] == "RADIO":
+                radio_handle = subprocess.call(["mpc","play","1"])
+                msg = str(eval(self.element["Content"]))	
 	    self.count = 0
 	    lcd.clear()
 	    lcd.message(self.element["Name"]+"\n"+msg)
@@ -200,7 +203,9 @@ class Menu():
 			if lcd.is_pressed(LCD.SELECT):
                 		self.returnToTopElement()
                			self.isOnCount = 0
-				#print "s"
+                                #press select to stop the radio
+                                radio_handle = subprocess.call(["mpc","stop"])
+				print radio_handle
                 		sleep(.3)
         		if self.isOnCount > 100:
                 		lcd.set_backlight(0)
